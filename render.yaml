@@ -3,7 +3,7 @@ services:
     name: disaster-management-system
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 4 --timeout 120 application:app
+    startCommand: uwsgi --ini uwsgi.ini
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
@@ -14,7 +14,7 @@ services:
       - key: PORT
         value: 10000
       - key: FLASK_APP
-        value: application.py
+        value: main.py
       - key: FLASK_ENV
         value: production
       - key: PYTHONUNBUFFERED
