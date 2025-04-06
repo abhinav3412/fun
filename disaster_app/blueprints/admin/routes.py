@@ -10,11 +10,17 @@ from disaster_app.extensions import db
 
 def get_table_count():
     """Get count of records from various tables"""
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'static', 'data')
+    try:
+        with open(os.path.join(data_dir, 'sensor_data.json'), 'r') as f:
+            sensor_data = json.load(f)
+    except FileNotFoundError:
+        sensor_data = []
     return {
         'users': User.query.count(),
         'camps': Camp.query.count(),
         'warehouses': Warehouse.query.count(),
-        'sensors': Sensor.query.count()
+        'sensors': len(sensor_data)
     }
 
 @admin_bp.route('/')

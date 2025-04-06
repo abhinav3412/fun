@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_mail import Mail
 from datetime import datetime
+import os
 
 from disaster_app.models import Camp, User, Vehicle, Warehouse
 from .config import Config
@@ -28,6 +29,11 @@ def has_no_empty_params(rule):
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+    
+    # Create required directories
+    static_dir = os.path.join(app.root_path, 'static')
+    data_dir = os.path.join(static_dir, 'data')
+    os.makedirs(data_dir, exist_ok=True)
     
     # Initialize extensions
     db.init_app(app)

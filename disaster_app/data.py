@@ -15,12 +15,16 @@ from typing import Dict, List, Optional
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Create the log directory if it doesn't exist
+log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data')
+os.makedirs(log_dir, exist_ok=True)
+
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('app/static/data/sensor_service.log'),
+        logging.FileHandler(os.path.join(log_dir, 'sensor_service.log')),
         logging.StreamHandler()
     ]
 )
@@ -539,25 +543,18 @@ def calculate_confusion_matrix(y_true, y_pred):
     # Create classification report
     report = classification_report(y_true, y_pred)
     
-    # Calculate percentages for confusion matrix
-    cm_percentage = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-    
     # Create visualization
     plt.figure(figsize=(10, 8))
-    sns.heatmap(cm_percentage, annot=True, fmt='.2%', cmap='Blues',
-                xticklabels=['No Landslide', 'Landslide'],
-                yticklabels=['No Landslide', 'Landslide'])
-    plt.title('Confusion Matrix (Percentage)')
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+    plt.title('Confusion Matrix')
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
-    
-    # Save the plot
-    plt.savefig('app/static/data/confusion_matrix.png')
+    plt.savefig(os.path.join(log_dir, 'confusion_matrix.png'))
     plt.close()
     
     return {
         'matrix': cm.tolist(),
-        'matrix_percentage': cm_percentage.tolist(),
+        'matrix_percentage': cm.astype('float') / cm.sum(axis=1)[:, np.newaxis].tolist(),
         'metrics': {
             'accuracy': round(accuracy, 4),
             'precision': round(precision, 4),

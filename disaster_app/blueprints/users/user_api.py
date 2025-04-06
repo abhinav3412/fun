@@ -24,7 +24,8 @@ razorpay_client = razorpay.Client(auth=(
 @user_bp.route('/get_sensor_data')
 def get_sensor_data():
     try:
-        with open('app/static/data/sensor_data.json') as file:
+        data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'static', 'data')
+        with open(os.path.join(data_dir, 'sensor_data.json')) as file:
             data = load_json(file)
         
         # Create a dictionary to store the latest active sensor for each name
@@ -498,7 +499,8 @@ def get_alerts():
     Fetch current alerts from sensor data.
     """
     try:
-        with open('app/static/data/sensor_data.json') as file:
+        data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'static', 'data')
+        with open(os.path.join(data_dir, 'sensor_data.json')) as file:
             sensor_data = load_json(file)
         
         # Filter sensors with Alert or Warning status AND are Active
