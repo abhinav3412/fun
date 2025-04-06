@@ -24,7 +24,6 @@ class User(UserMixin, db.Model):
     # Relationships
     associated_camp = db.relationship('Camp', foreign_keys=[associated_camp_id], backref='users')
     associated_warehouse = db.relationship('Warehouse', foreign_keys=[associated_warehouse_id], backref='associated_users')
-    managed_warehouse = db.relationship('Warehouse', foreign_keys='Warehouse.manager_id', back_populates='manager', uselist=False)
     donation = db.relationship("Donation", back_populates="user", lazy=True)
     donation_amount = db.relationship("DonationAmount", backref="user", lazy=True)
 
@@ -311,10 +310,8 @@ class Warehouse(db.Model):
     status = db.Column(db.String(20), default='Operational')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
-    # Add relationship to manager
-    manager = db.relationship('User', foreign_keys=[manager_id], back_populates='managed_warehouse')
-    
     # Relationships
+    manager = db.relationship('User', foreign_keys=[manager_id], backref='managed_warehouses')
     vehicles = db.relationship('Vehicle', backref='warehouse_ref', lazy=True)
     resource_requests = db.relationship('ResourceRequest', backref='warehouse_ref', lazy=True)
     

@@ -250,8 +250,18 @@ def get_all_warehouses():
             'wid': warehouse.wid,
             'name': warehouse.name,
             'location': warehouse.location,
-            'capacity': warehouse.capacity,
-            'current_stock': warehouse.current_stock,
+            'capacity': {
+                'food': warehouse.food_capacity,
+                'water': warehouse.water_capacity,
+                'essentials': warehouse.essential_capacity,
+                'clothes': warehouse.clothes_capacity
+            },
+            'current_stock': {
+                'food': warehouse.food_available,
+                'water': warehouse.water_available,
+                'essentials': warehouse.essentials_available,
+                'clothes': warehouse.clothes_available
+            },
             'status': warehouse.status,
             'manager': {
                 'uid': warehouse.manager.uid,

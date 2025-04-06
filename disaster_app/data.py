@@ -436,7 +436,7 @@ def calculate_shear_stress(slope, soil_saturation):
 
 def save_sensor_data_to_json(sensors_data):
     """Save sensor data to a JSON file."""
-    output_file = os.path.join('app', 'static', 'data', 'sensor_data.json')
+    output_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data', 'sensor_data.json')
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
     with open(output_file, 'w') as f:
@@ -444,7 +444,7 @@ def save_sensor_data_to_json(sensors_data):
 
 def load_sensor_configs():
     """Load sensor configurations from JSON file."""
-    config_file = os.path.join('app', 'static', 'data', 'sensor_configs.json')
+    config_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data', 'sensor_configs.json')
     
     # Check if file exists
     if not os.path.exists(config_file):
@@ -478,7 +478,7 @@ def load_sensor_configs():
 
 def save_sensor_configs(configs):
     """Save sensor configurations to JSON file."""
-    config_file = os.path.join('app', 'static', 'data', 'sensor_configs.json')
+    config_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data', 'sensor_configs.json')
     os.makedirs(os.path.dirname(config_file), exist_ok=True)
     
     with open(config_file, 'w') as f:
@@ -486,7 +486,7 @@ def save_sensor_configs(configs):
 
 def save_historical_data():
     """Save historical data to a JSON file."""
-    output_file = os.path.join('app', 'static', 'data', 'historical_data.json')
+    output_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data', 'historical_data.json')
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
     serializable_data = {}
@@ -498,7 +498,7 @@ def save_historical_data():
 
 def load_historical_data():
     """Load historical data from JSON file."""
-    input_file = os.path.join('app', 'static', 'data', 'historical_data.json')
+    input_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data', 'historical_data.json')
     
     # Check if file exists
     if not os.path.exists(input_file):
@@ -615,7 +615,7 @@ def evaluate_predictions(historical_data):
     evaluation = calculate_confusion_matrix(y_true, y_pred)
     
     # Save evaluation results
-    output_file = os.path.join('app', 'static', 'data', 'evaluation_results.json')
+    output_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'data', 'evaluation_results.json')
     with open(output_file, 'w') as f:
         json.dump(evaluation, f, indent=4)
     
