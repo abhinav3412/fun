@@ -1,0 +1,29 @@
+{
+    "matrix": [
+        [
+            27,
+            0
+        ],
+        [
+            0,
+            42
+        ]
+    ],
+    "matrix_percentage": [
+        [
+            1.0,
+            0.0
+        ],
+        [
+            0.0,
+            1.0
+        ]
+    ],
+    "metrics": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0
+    },
+    "report": "              precision    recall  f1-score   support\n\n           0       1.00      1.00      1.00        27\n           1       1.00      1.00      1.00        42\n\n    accuracy                           1.00        69\n   macro avg       1.00      1.00      1.00        69\nweighted avg       1.00      1.00      1.00        69\n"
+}

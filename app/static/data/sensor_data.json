@@ -1,0 +1,149 @@
+[
+    {
+        "id": 1,
+        "name": "Kannur Fort",
+        "latitude": 11.8662,
+        "longitude": 75.392918,
+        "soil_type": "loam",
+        "timestamp": "2025-04-06T23:14:37.449786",
+        "rainfall": 173.4,
+        "forecasted_rainfall": 68.85,
+        "soil_saturation": 48.84,
+        "slope": 35.35,
+        "seismic_activity": 1.69,
+        "operational_status": "Active",
+        "status": "Alert",
+        "risk_level": "High",
+        "affected_radius": 5339,
+        "predicted_landslide_time": "48h - 08/04 23:14",
+        "trends": {
+            "rainfall": {
+                "trend": "stable",
+                "change_rate": -0.035,
+                "volatility": 0.219
+            },
+            "soil_saturation": {
+                "trend": "stable",
+                "change_rate": 0.004,
+                "volatility": 0.051
+            },
+            "slope": {
+                "trend": "stable",
+                "change_rate": 0.026,
+                "volatility": 0.522
+            },
+            "seismic_activity": {
+                "trend": "stable",
+                "change_rate": 0.036,
+                "volatility": 0.598
+            }
+        },
+        "soil_stability": {
+            "shear_strength": 12.21,
+            "factor_of_safety": 0.0,
+            "stability_index": 0.0,
+            "driving_force": 9648.81,
+            "resisting_force": 9.96,
+            "pore_pressure_ratio": 0.56
+        },
+        "last_reading": "2025-04-06T23:14:37.449786"
+    },
+    {
+        "id": 2,
+        "name": "Sngcet",
+        "latitude": 12.1415,
+        "longitude": 75.2501,
+        "soil_type": "silt",
+        "timestamp": "2025-04-06T23:14:37.452797",
+        "rainfall": 120.63,
+        "forecasted_rainfall": 68.65,
+        "soil_saturation": 57.92,
+        "slope": 19.35,
+        "seismic_activity": 5.61,
+        "operational_status": "Active",
+        "status": "Warning",
+        "risk_level": "Medium",
+        "affected_radius": 3856,
+        "predicted_landslide_time": "7d - 13/04 23:14",
+        "trends": {
+            "rainfall": {
+                "trend": "stable",
+                "change_rate": 0.08,
+                "volatility": 0.501
+            },
+            "soil_saturation": {
+                "trend": "stable",
+                "change_rate": 0.005,
+                "volatility": 0.036
+            },
+            "slope": {
+                "trend": "stable",
+                "change_rate": 0.024,
+                "volatility": 0.394
+            },
+            "seismic_activity": {
+                "trend": "stable",
+                "change_rate": -0.056,
+                "volatility": 0.636
+            }
+        },
+        "soil_stability": {
+            "shear_strength": 15.63,
+            "factor_of_safety": 0.0,
+            "stability_index": 0.0,
+            "driving_force": 5525.72,
+            "resisting_force": 14.75,
+            "pore_pressure_ratio": 0.81
+        },
+        "last_reading": "2025-04-06T23:14:37.452797"
+    },
+    {
+        "id": 3,
+        "name": "junction",
+        "latitude": 11.916934,
+        "longitude": 75.357973,
+        "soil_type": "sand",
+        "timestamp": "2025-04-06T23:14:37.454793",
+        "rainfall": 72.35,
+        "forecasted_rainfall": 89.32,
+        "soil_saturation": 73.37,
+        "slope": 30.08,
+        "seismic_activity": 0,
+        "operational_status": "Active",
+        "status": "Normal",
+        "risk_level": "Low",
+        "affected_radius": 0,
+        "predicted_landslide_time": "No immediate risk",
+        "trends": {
+            "rainfall": {
+                "trend": "stable",
+                "change_rate": 0.081,
+                "volatility": 0.399
+            },
+            "soil_saturation": {
+                "trend": "stable",
+                "change_rate": -0.005,
+                "volatility": 0.049
+            },
+            "slope": {
+                "trend": "stable",
+                "change_rate": 0.007,
+                "volatility": 0.194
+            },
+            "seismic_activity": {
+                "trend": "stable",
+                "change_rate": 0.01,
+                "volatility": 0.433
+            }
+        },
+        "soil_stability": {
+            "shear_strength": -2.16,
+            "factor_of_safety": -0.0,
+            "stability_index": 0.0,
+            "driving_force": 7866.97,
+            "resisting_force": -1.87,
+            "pore_pressure_ratio": 1.72
+        },
+        "last_reading": "2025-04-06T23:14:37.454793"
+    }
+]
