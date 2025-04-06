@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from flask import current_app
-from app.models import User, db
+from disaster_app.models import User, db
 from dotenv import load_dotenv
 
 # Load environment variables

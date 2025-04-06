@@ -1,5 +1,5 @@
 from app import create_app
-from app.data import main
+from disaster_app.data import main
 app = create_app()
 
 if __name__ == '__main__':

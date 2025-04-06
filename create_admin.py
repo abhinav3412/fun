@@ -1,5 +1,5 @@
 from app import create_app
-from app.models import User, db
+from disaster_app.models import User, db
 
 app = create_app()
 

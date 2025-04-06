@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import UserRequest
+from disaster_app.models import UserRequest
 
 def init_db():
     app = create_app()

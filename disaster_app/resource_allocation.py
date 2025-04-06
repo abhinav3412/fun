@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 from geopy.distance import geodesic
 from concurrent.futures import ThreadPoolExecutor
 import heapq
-from app.models import Camp, Warehouse, Vehicle
-from app.extensions import db
+from disaster_app.models import Camp, Warehouse, Vehicle
+from disaster_app.extensions import db
 
 # Ensure no accidental reassignment of 'requests'
 assert requests.__name__ == 'requests', "The 'requests' library has been overwritten!"

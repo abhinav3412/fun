@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import Volunteer
+from disaster_app.models import Volunteer
 
 def upgrade():
     """
