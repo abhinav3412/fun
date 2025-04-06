@@ -1,0 +1,189 @@
+{% extends "admin/base.html" %}
+
+{% block csscontent %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/camp.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <style>
+        .table-container {
+            max-height: 500px;
+            overflow-y: scroll;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            min-height: 200px;
+        }
+
+        #volunteer-table {
+            width: 100%;
+            margin: 0;
+        }
+
+        #volunteer-table thead th {
+            position: sticky;
+            top: 0;
+            background: rgba(33, 37, 41, 0.9);
+            color: white;
+            padding: 12px;
+            z-index: 1;
+        }
+
+        #volunteer-table tbody td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom scrollbar */
+        .table-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Download button styling */
+        .download-section {
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .download-btn {
+            background: rgba(40, 167, 69, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: rgba(40, 167, 69, 1);
+            transform: translateY(-2px);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="camp-management-container">
+    <div class="camp-management-box">
+        <div class="camp-header">
+            <h2>Volunteer Applications</h2>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <button class="download-btn" id="download-excel">
+                <i class="fas fa-download"></i>Download Excel
+            </button>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="search-filter-section">
+            <input type="text" id="search-name" placeholder="Search by name...">
+            <input type="text" id="search-location" placeholder="Search by location...">
+        </div>
+
+        <!-- Volunteer List Table -->
+        <div class="table-container">
+            <table id="volunteer-table" class="display">
+                <thead>
+                    <tr>
+                        <th>Role ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Role</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block jscontent %}
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+<!-- DataTables Buttons -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<!-- SheetJS -->
+<script type="text/javascript" src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Initialize DataTable with AJAX loading
+    const table = $('#volunteer-table').DataTable({
+        ajax: {
+            url: '/admin/get_all_volunteers',
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'role_id' },
+            { data: 'name' },
+            { data: 'email' },
+            { data: 'mobile' },
+            { data: 'role' },
+            { data: 'location' }
+        ],
+        order: [[0, 'desc']],  // Sort by Role ID in descending order by default
+        dom: 't',  // Only show table, remove pagination
+        paging: false,  // Disable pagination
+        language: {
+            emptyTable: "No volunteer applications found"
+        }
+    });
+
+    // Handle search functionality
+    $('#search-name').on('keyup', function() {
+        table.columns(1).search(this.value).draw();
+    });
+
+    $('#search-location').on('keyup', function() {
+        table.columns(5).search(this.value).draw();
+    });
+
+    // Handle Excel download
+    $('#download-excel').on('click', function() {
+        // Get visible data (respecting search filters)
+        const visibleData = table.rows({ search: 'applied' }).data().toArray();
+        
+        // Convert data to worksheet format
+        const worksheet = XLSX.utils.json_to_sheet(visibleData);
+        
+        // Create workbook and append worksheet
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Volunteers");
+        
+        // Generate filename with current date
+        const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
+        const filename = `Volunteer_Applications_${currentDate}.xlsx`;
+        
+        // Write and download file
+        XLSX.writeFile(workbook, filename);
+    });
+});
+</script>
+{% endblock %} 

@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block csscontent %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/user/volunteer.css')}}" >
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Top Row -->
+        <div class="top-row">
+             <!-- Become a Volunteer Section -->
+             <div class="volunteer-details glass">
+                <h2>Become a Volunteer</h2>
+                <p>Join us in making a difference during disasters.</p>
+                <form id="volunteer-form">
+                    <div class="form-field">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your name" value="{{ user.username }}" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" value="{{ user.email }}" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="mobile">Mobile:</label>
+                        <input type="tel" name="mobile" id="mobile" placeholder="Enter your mobile number" value="{{ user.mobile if user.mobile else '' }}" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="role">Role:</label>
+                        <select name="role" id="role" required>
+                            <option value="">Select a role</option>
+                            <option value="Food Distribution Volunteer">Food Distribution Volunteer</option>
+                            <option value="Medical Aid Volunteer">Medical Aid Volunteer</option>
+                            <option value="Rescue Operation Volunteer">Rescue Operation Volunteer</option>
+                            <option value="Shelter Management Volunteer">Shelter Management Volunteer</option>
+                            <option value="Logistics Coordinator">Logistics Coordinator</option>
+                            <option value="Counseling Volunteer">Counseling Volunteer</option>
+                            <option value="Water Sanitation Volunteer">Water Sanitation Volunteer</option>
+                            <option value="Child Care Volunteer">Child Care Volunteer</option>
+                            <option value="Elderly Care Volunteer">Elderly Care Volunteer</option>
+                            <option value="Animal Rescue Volunteer">Animal Rescue Volunteer</option>
+                            <option value="Community Liaison Volunteer">Community Liaison Volunteer</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="role_id">Role ID:</label>
+                        <input type="text" name="role_id" id="role_id" placeholder="Enter Role ID (e.g., R123 or 123)" pattern="^(R?\d+)$" required>
+                        <small class="form-hint">You can enter the ID with or without 'R' prefix (e.g., R123 or 123)</small>
+                    </div>
+                    <div class="form-field">
+                        <label for="location">Location:</label>
+                        <input type="text" name="location" id="location" placeholder="Enter your location" value="{{ user.location if user.location else ''}}" required>
+                    </div>
+                    <button type="submit" class="btn">Submit Application</button>
+                </form>
+            </div>
+
+            <!-- Available Role Section -->
+            <div class="available-role glass">
+                <h2>Available Roles</h2>
+                <div class="role-table-container">
+                    <table id="role-table">
+                        <thead>
+                            <tr>
+                                <th>Role ID</th>
+                                <th>Role</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- First set of rows -->
+                            <tr>
+                                <td>R123</td>
+                                <td>Food Distribution Volunteer</td>
+                                <td>Assist in distributing food supplies to affected families.</td>
+                            </tr>
+                            <tr>
+                                <td>R124</td>
+                                <td>Medical Aid Volunteer</td>
+                                <td>Provide medical assistance to injured individuals.</td>
+                            </tr>
+                            <tr>
+                                <td>R125</td>
+                                <td>Rescue Operation Volunteer</td>
+                                <td>Participate in rescue operations during floods.</td>
+                            </tr>
+                            <tr>
+                                <td>R126</td>
+                                <td>Shelter Management Volunteer</td>
+                                <td>Help manage relief camps and coordinate resources.</td>
+                            </tr>
+                            <tr>
+                                <td>R127</td>
+                                <td>Logistics Coordinator</td>
+                                <td>Organize transportation and delivery of supplies.</td>
+                            </tr>
+                            <tr>
+                                <td>R128</td>
+                                <td>Counseling Volunteer</td>
+                                <td>Provide emotional support to affected individuals.</td>
+                            </tr>
+                            <tr>
+                                <td>R129</td>
+                                <td>Water Sanitation Volunteer</td>
+                                <td>Ensure clean water supply and sanitation facilities.</td>
+                            </tr>
+                            <tr>
+                                <td>R130</td>
+                                <td>Child Care Volunteer</td>
+                                <td>Take care of children in relief camps.</td>
+                            </tr>
+                            <tr>
+                                <td>R131</td>
+                                <td>Elderly Care Volunteer</td>
+                                <td>Assist elderly individuals in relief camps.</td>
+                            </tr>
+                            <tr>
+                                <td>R132</td>
+                                <td>Animal Rescue Volunteer</td>
+                                <td>Rescue and care for animals affected by disasters.</td>
+                            </tr>
+                            <tr>
+                                <td>R133</td>
+                                <td>Community Liaison Volunteer</td>
+                                <td>Act as a bridge between communities and relief teams.</td>
+                            </tr>
+                            <!-- Duplicate set of rows for seamless scrolling -->
+                            <tr>
+                                <td>R123</td>
+                                <td>Food Distribution Volunteer</td>
+                                <td>Assist in distributing food supplies to affected families.</td>
+                            </tr>
+                            <tr>
+                                <td>R124</td>
+                                <td>Medical Aid Volunteer</td>
+                                <td>Provide medical assistance to injured individuals.</td>
+                            </tr>
+                            <tr>
+                                <td>R125</td>
+                                <td>Rescue Operation Volunteer</td>
+                                <td>Participate in rescue operations during floods.</td>
+                            </tr>
+                            <tr>
+                                <td>R126</td>
+                                <td>Shelter Management Volunteer</td>
+                                <td>Help manage relief camps and coordinate resources.</td>
+                            </tr>
+                            <tr>
+                                <td>R127</td>
+                                <td>Logistics Coordinator</td>
+                                <td>Organize transportation and delivery of supplies.</td>
+                            </tr>
+                            <tr>
+                                <td>R128</td>
+                                <td>Counseling Volunteer</td>
+                                <td>Provide emotional support to affected individuals.</td>
+                            </tr>
+                            <tr>
+                                <td>R129</td>
+                                <td>Water Sanitation Volunteer</td>
+                                <td>Ensure clean water supply and sanitation facilities.</td>
+                            </tr>
+                            <tr>
+                                <td>R130</td>
+                                <td>Child Care Volunteer</td>
+                                <td>Take care of children in relief camps.</td>
+                            </tr>
+                            <tr>
+                                <td>R131</td>
+                                <td>Elderly Care Volunteer</td>
+                                <td>Assist elderly individuals in relief camps.</td>
+                            </tr>
+                            <tr>
+                                <td>R132</td>
+                                <td>Animal Rescue Volunteer</td>
+                                <td>Rescue and care for animals affected by disasters.</td>
+                            </tr>
+                            <tr>
+                                <td>R133</td>
+                                <td>Community Liaison Volunteer</td>
+                                <td>Act as a bridge between communities and relief teams.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block jscontent %}
+    <script src="{{ url_for('static', filename='/js/user/volunteer.js')}}"></script>
+{% endblock %}
