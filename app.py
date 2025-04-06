@@ -12,8 +12,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 try:
-    from app import create_app
-    logger.info("Successfully imported create_app from app module")
+    from disaster_app import create_app
+    logger.info("Successfully imported create_app from disaster_app module")
 except Exception as e:
     logger.error(f"Failed to import create_app: {str(e)}")
     raise

@@ -20,4 +20,6 @@ services:
       - key: PYTHONUNBUFFERED
         value: 1
       - key: GUNICORN_CMD_ARGS
-        value: "--log-level debug --access-logfile - --error-logfile -" 
+        value: "--log-level debug --access-logfile - --error-logfile -"
+      - key: PYTHONPATH
+        value: /opt/render/project/src 
