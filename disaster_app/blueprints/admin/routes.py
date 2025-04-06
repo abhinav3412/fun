@@ -238,13 +238,14 @@ def get_sensor_data():
             with open('disaster_app/static/data/sensor_data.json', 'r') as f:
                 json_sensors = json.load(f)
                 json_sensor_list = [{
-                    'sid': sensor['id'],
+                    'id': sensor['id'],
                     'name': sensor['name'],
                     'latitude': sensor['latitude'],
                     'longitude': sensor['longitude'],
                     'soil_type': sensor['soil_type'],
                     'status': sensor.get('status', 'Active'),
-                    'operational_status': sensor.get('operational_status', 'Active')
+                    'operational_status': sensor.get('operational_status', 'Active'),
+                    'is_inactive': sensor.get('status', 'Active') != 'Active'
                 } for sensor in json_sensors]
         except (FileNotFoundError, json.JSONDecodeError):
             json_sensor_list = []
@@ -255,21 +256,22 @@ def get_sensor_data():
         
         # Add JSON sensors first
         for sensor in json_sensor_list:
-            if sensor['sid'] not in seen_ids:
+            if sensor['id'] not in seen_ids:
                 all_sensors.append(sensor)
-                seen_ids.add(sensor['sid'])
+                seen_ids.add(sensor['id'])
         
         # Add database sensors
         for sensor in db_sensors:
             if sensor.sid not in seen_ids:
                 all_sensors.append({
-                    'sid': sensor.sid,
+                    'id': sensor.sid,
                     'name': sensor.name,
                     'latitude': sensor.latitude,
                     'longitude': sensor.longitude,
                     'soil_type': sensor.soil_type,
                     'status': sensor.status,
-                    'operational_status': sensor.operational_status
+                    'operational_status': sensor.operational_status,
+                    'is_inactive': sensor.status != 'Active'
                 })
                 seen_ids.add(sensor.sid)
         
