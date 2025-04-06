@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, current_app
-from app.models import db, Volunteer
+from disaster_app.models import db, Volunteer
 from datetime import datetime
 
 volunteer_bp = Blueprint('volunteer', __name__)

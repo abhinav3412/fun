@@ -1,14 +1,14 @@
 from flask import jsonify, render_template, request, session, current_app
 from . import camp_manager_bp
 from flask_login import current_user, login_required
-from app.db_manager import CampManager, CampNotFound
-from app.resource_allocation import (
+from disaster_app.db_manager import CampManager, CampNotFound
+from disaster_app.resource_allocation import (
     allocate_resources,
     calculate_road_distance_and_duration,
     format_eta
 )
-from app.models import Camp, Vehicle, UserRequest, ResourceRequest, Warehouse, User, Request, Notification, CampNotification
-from app import db
+from disaster_app.models import Camp, Vehicle, UserRequest, ResourceRequest, Warehouse, User, Request, Notification, CampNotification
+from disaster_app.extensions import db
 from datetime import datetime, timedelta
 import os
 import json

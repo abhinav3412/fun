@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, session, url_for, flash, request, jsonify
 from flask_login import login_user, logout_user, login_required
-from app.extensions import db, bcrypt
-from app.models import User
+from disaster_app.extensions import db, bcrypt
+from disaster_app.models import User
 from . import auth_bp
 from werkzeug.security import generate_password_hash
 

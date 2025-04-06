@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_mail import Mail
 from datetime import datetime
 
-from app.models import Camp, User, Vehicle, Warehouse
+from disaster_app.models import Camp, User, Vehicle, Warehouse
 from .config import Config
 
 from .extensions import db, migrate, bcrypt

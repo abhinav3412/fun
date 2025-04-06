@@ -1,10 +1,10 @@
 from flask import render_template, jsonify, request, current_app, send_file
 from flask_login import login_required, current_user
-from app.models import Warehouse, Vehicle, db, ResourceRequest, Camp, User, Notification, Donation
-from app.decorators import warehouse_manager_required
+from disaster_app.models import Warehouse, Vehicle, db, ResourceRequest, Camp, User, Notification, Donation
+from disaster_app.decorators import warehouse_manager_required
 from . import warehouse_manager_bp
-from app.db_manager import VehicleManager
-from app.resource_allocation import allocate_resources, calculate_road_distance_and_duration, format_eta
+from disaster_app.db_manager import VehicleManager
+from disaster_app.resource_allocation import allocate_resources, calculate_road_distance_and_duration, format_eta
 from datetime import datetime, timedelta
 import json
 from io import StringIO, BytesIO

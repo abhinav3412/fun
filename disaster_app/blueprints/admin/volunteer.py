@@ -1,7 +1,7 @@
 from flask import render_template, jsonify, request
 from flask_login import login_required
-from app.models import Volunteer
-from app.extensions import db
+from disaster_app.models import Volunteer
+from disaster_app.extensions import db
 from . import admin_bp
 
 @admin_bp.route('/volunteer')

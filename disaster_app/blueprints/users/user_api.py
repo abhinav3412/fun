@@ -2,15 +2,15 @@ from . import user_bp
 from .utils import VolunteerForm
 from flask import jsonify, request
 from json import load as load_json
-from app.models import Camp, CampNotification, Donation, VolunteerHistory, Volunteer, UserRequest, User
+from disaster_app.models import Camp, CampNotification, Donation, VolunteerHistory, Volunteer, UserRequest, User
 from flask_login import current_user, login_required
-from app.db_manager import CampManager, DonationManager, ForumManager, VolunteerManager
+from disaster_app.db_manager import CampManager, DonationManager, ForumManager, VolunteerManager
 import razorpay
 from datetime import datetime
-from app import db
+from disaster_app.extensions import db
 import json
 import os
-from app.utils.sms import send_alert_to_users
+from disaster_app.utils.sms import send_alert_to_users
 
 
 # Initialize Razorpay client

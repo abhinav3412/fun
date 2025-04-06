@@ -1,8 +1,8 @@
 from flask import render_template, request
-from app.models import Feedback
+from disaster_app.models import Feedback
 from . import user_bp
 from flask_login import current_user, login_required
-from app.extensions import db
+from disaster_app.extensions import db
 from .user_api import *
 
 @user_bp.route('/')

@@ -1,6 +1,6 @@
 from flask import jsonify, render_template
 
-from app.db_manager import CampManager
+from disaster_app.db_manager import CampManager
 from . import local_auth_bp
 from flask_login import current_user, login_required
 
