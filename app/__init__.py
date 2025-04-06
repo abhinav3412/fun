@@ -72,3 +72,6 @@ def create_app(config_class=Config):
         return '<br>'.join(['<a href="{url}">{endpoint}</a>'.format(url=url, endpoint=endpoint) for url, endpoint in links])
     
     return app
+
+# Create the application instance
+app = create_app()
