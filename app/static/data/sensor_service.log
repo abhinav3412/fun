@@ -258,3 +258,9 @@
 2025-04-07 02:15:07,213 - INFO -  * Debugger PIN: 843-557-168
 2025-04-07 02:17:02,401 - INFO -  * Detected change in 'C:\\Users\\PREDATOR\\Desktop\\234\\wsgi.py', reloading
 2025-04-07 02:17:02,688 - INFO -  * Restarting with stat
+2025-04-07 02:17:04,800 - WARNING -  * Debugger is active!
+2025-04-07 02:17:04,805 - INFO -  * Debugger PIN: 843-557-168
+2025-04-07 02:21:38,874 - INFO -  * Detected change in 'C:\\Users\\PREDATOR\\Desktop\\234\\app.py', reloading
+2025-04-07 02:21:39,306 - INFO -  * Restarting with stat
+2025-04-07 02:21:41,374 - WARNING -  * Debugger is active!
+2025-04-07 02:21:41,378 - INFO -  * Debugger PIN: 843-557-168
